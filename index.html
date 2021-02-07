@@ -38,60 +38,105 @@
                 <div class="col-5 mx-auto">
                     <form id="search-form" action="">
                         <div class="input-group mb-3">
-                            <input id="search-input" type="text" class="form-control" placeholder="Search Recipe.."
+                            <input id="search-input" type="text" class="form-control" autocomplete="off" placeholder="Search Recipe.."
                                 aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <button type="submit" class="input-group-text bg-dark text-white fs-6 px-4" id="basic-addon2">SEARCH</button>
+                            <button type="submit" class="input-group-text bg-warning text-white fs-6 px-4"
+                                id="basic-addon2">SEARCH</button>
                         </div>
                     </form>
                 </div>
             </div>
+            <div class="row">
+                <div id="spin" class="d-none">
+                    <div class="d-flex text-warning justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                  </div>
+            </div>
             <div id="recipe-result" class="mb-4">
 
-                    <div class="card p-0 bg-gray">
-                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
-                        style="height: 170px; object-fit: cover;" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="text-center">Vegan Salad Bowl</h6>
-                        </div>
+                <!-- <div class="card p-0 bg-gray">
+                    <div class="overlay d-flex justify-content-center align-items-center">
+                        <button onclick="log()" class="btn text-white d-flex align-items-center border">
+                            <h4><svg height="30px" width="30px" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg> Open</h4>
+                        </button>
                     </div>
-                    <div class="card p-0 bg-gray">
-                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
+                    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg"
                         style="height: 170px; object-fit: cover;" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="text-center">Vegan Salad Bowl</h6>
-                        </div>
+                    <div class="card-body">
+                        <h6 class="text-center">Vegan Salad Bowl</h6>
                     </div>
-                    <div class="card p-0 bg-gray">
-                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
+                </div>
+                <div class="card p-0 bg-gray">
+                    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
                         style="height: 170px; object-fit: cover;" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="text-center">Vegan Salad Bowl</h6>
-                        </div>
+                    <div class="card-body">
+                        <h6 class="text-center">Vegan Salad Bowl</h6>
                     </div>
-                    <div class="card p-0 bg-gray">
-                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
+                </div>
+                <div class="card p-0 bg-gray">
+                    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
                         style="height: 170px; object-fit: cover;" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="text-center">Vegan Salad Bowl</h6>
-                        </div>
+                    <div class="card-body">
+                        <h6 class="text-center">Vegan Salad Bowl</h6>
                     </div>
-                    <div class="card p-0 bg-gray">
-                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
+                </div>
+                <div class="card p-0 bg-gray">
+                    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
                         style="height: 170px; object-fit: cover;" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="text-center">Vegan Salad Bowl</h6>
-                        </div>
+                    <div class="card-body">
+                        <h6 class="text-center">Vegan Salad Bowl</h6>
                     </div>
-                    <div class="card p-0 bg-gray">
-                        <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
+                </div>
+                <div class="card p-0 bg-gray">
+                    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
                         style="height: 170px; object-fit: cover;" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h6 class="text-center">Vegan Salad Bowl</h6>
-                        </div>
+                    <div class="card-body">
+                        <h6 class="text-center">Vegan Salad Bowl</h6>
                     </div>
-                
+                </div>
+                <div class="card p-0 bg-gray">
+                    <img src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg/preview"
+                        style="height: 170px; object-fit: cover;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h6 class="text-center">Vegan Salad Bowl</h6>
+                    </div>
+                </div> -->
+
 
             </div>
+
+            <div id="lookup">
+
+            <!-- <h1 class="mt-5">Description:</h1>
+            <div class="row mt-3">
+                <div class="col-6 mx-auto">
+                    <div class="mx-auto">
+                        <img class="img-fluid rounded-10" style="height: 400px;"
+                            src="https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg" alt="">
+                        <h2 class="my-3">Vegan Salad Bowl</h2>
+                        <h6 class="fw-bold mb-3">Ingredients</h6>
+                        <ul id="ingredients" class="text-muted fs-6 mb-5">
+                            <li>ingrediet</li>
+                            <li>ingrediet</li>
+                            <li>ingrediet</li>
+                            <li>ingrediet</li>
+                            <li>ingrediet</li>
+                            <li>ingrediet</li>
+                            <li>ingrediet</li>
+                            <li>ingrediet</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
         </div>
 
     </main>

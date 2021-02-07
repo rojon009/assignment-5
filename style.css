@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;0,900;1,400&display=swap');
+html,body{
+    font-family: 'Roboto', sans-serif;
+}
 .ml-auto{
     margin-left: auto;
 }
@@ -8,10 +12,58 @@
 
 #recipe-result{
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(13rem, 1fr) );
+    grid-template-columns: repeat( auto-fit, minmax(13rem, 14rem) );
     gap: 15px;
+    justify-content: center;
 }
 
-#recipe-result > div{
+.card{
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.5s;
+    position: relative;
+}
+/* .card:hover img{
+    transform: scale(1.2);
+} */
+.card img{
+    display: block;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+    
+}
 
+.rounded-10{
+    border-radius: 10px;
+}
+
+
+.overlay{
+    transition: all 0.3s;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    backdrop-filter: blur(0px);
+    background-color: rgba(0, 0, 0, 0.7);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.card:hover .overlay{
+    visibility: visible;
+    backdrop-filter: blur(1px);
+    pointer-events: all;
+    cursor: pointer;
+}
+
+#ingredients ul{
+    list-style-image: url('./check.svg');
+    list-style-position: inside;
+}
+
+li::marker{
+    padding-top: 5px;
 }
