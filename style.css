@@ -1,0 +1,17 @@
+.ml-auto{
+    margin-left: auto;
+}
+
+.bg-gray{
+    background-color: #F8F7F5;
+}
+
+#recipe-result{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(13rem, 1fr) );
+    gap: 15px;
+}
+
+#recipe-result > div{
+
+}
