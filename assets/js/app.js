@@ -2,11 +2,10 @@ const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const recipeResultArea = document.getElementById("recipe-result");
 const lookupArea = document.getElementById("lookup");
-const spiner = document.getElementById("spin");
-
+const spinner = document.getElementById("spin");
 
 const displayMeal = (meal) => {
-    let mealHTML = `<div onclick="handleLookup(${meal.idMeal})" class="card p-0 bg-gray">
+  let mealHTML = `<div onclick="handleLookup(${meal.idMeal})" class="card p-0 bg-gray">
                         <div class="overlay d-flex justify-content-center align-items-center">
                             <h4 class="text-white">
                             <svg height="30px" width="30px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -17,14 +16,15 @@ const displayMeal = (meal) => {
                         <img src="${meal.strMealThumb}"
                             style="height: 170px; object-fit: cover;" class="card-img-top" alt="${meal.strTags}">
                         <div class="card-body">
-                            <h6 class="text-center">Vegan Salad Bowl</h6>
+                            <h6 class="text-center">${meal.strMeal}</h6>
                         </div>
                     </div>`;
 
-    recipeResultArea.insertAdjacentHTML("beforeend", mealHTML);
+  recipeResultArea.insertAdjacentHTML("beforeend", mealHTML);
 };
 
 const displayLookup = (meal, list) => {
+  if (meal && list) {
     let lookupHTML = `<h1 id="description" class="mt-5">Description:</h1>
                     <div class="row mt-3">
                         <div class="col-12 col-md-8 mx-auto">
@@ -38,59 +38,63 @@ const displayLookup = (meal, list) => {
                             </div>
                         </div>
                     </div>`;
-
     lookupArea.innerHTML = lookupHTML;
     const ingredientsArea = document.getElementById("ingredients");
     ingredientsArea.appendChild(list);
-}
+  } else {
+    lookupHTML = `<h1 id="description" class="mt-5">Description:</h1>
+                        <h5 class="mb-5 text-danger">We are facing problem to Render this Recipe. Please try another.</h5>`;
+    lookupArea.innerHTML = lookupHTML;
+  }
 
+  window.location.href = "#description";
+};
 
 searchForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const searchInputValue = searchInput.value;
-    recipeResultArea.innerHTML = '';
-    spiner.classList.remove('d-none');
-    fetch(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInputValue}`
-    )
-        .then((res) => res.json())
-        .then((res) => res.meals)
-        .then((res) => {
-            if (res) searchInput.value = "";
-            res.map((el) => displayMeal(el));
-            spiner.classList.add('d-none')
-        })
-        .catch((error) => {
-            recipeResultArea.innerText = 'Search Result Empty. Try another keyword. ';
-            spiner.classList.add('d-none');
-        });
+  e.preventDefault();
+  const searchInputValue = searchInput.value;
+  recipeResultArea.innerHTML = "";
+  spinner.classList.remove("d-none");
+  fetch(
+    `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInputValue}`
+  )
+    .then((res) => res.json())
+    .then((res) => res.meals)
+    .then((meals) => {
+      if (meals) searchInput.value = "";
+      meals.map((el) => displayMeal(el));
+      spinner.classList.add("d-none");
+    })
+    .catch((error) => {
+      recipeResultArea.innerText =
+        "Couldn't find any Recipe. Try another keyword. ";
+      spinner.classList.add("d-none");
+    });
 });
 
-
-
 const handleLookup = (id) => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
-        .then((res) => res.json())
-        .then((res) => res.meals[0])
-        .then((res) => {
-            let ul = document.createElement("ul");
-            for (let i = 1; i <= 20; i++) {
-                if (
-                    res["strMeasure" + i] != null &&
-                    res["strMeasure" + i] != "" &&
-                    res["strIngredient" + i] != null &&
-                    res["strIngredient" + i] != ""
-                ) {
-                    console.log(`${res["strMeasure" + i]} ${res["strIngredient" + i]}`);
-                    let li = document.createElement("li");
-                    li.innerText = `${res["strMeasure" + i]} ${res["strIngredient" + i]}`;
-                    ul.appendChild(li);
-                }
-            }
-            displayLookup(res, ul);
-            window.location.href = "#description";
-        })
-        .catch((error) => console.log("ERROR:" + error));
-}
-
-
+  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+    .then((res) => res.json())
+    .then((data) => data.meals[0])
+    .then((meal) => {
+      let ul = document.createElement("ul");
+      for (let i = 1; i <= 20; i++) {
+        if (
+          meal["strMeasure" + i] != null &&
+          meal["strMeasure" + i] != "" &&
+          meal["strIngredient" + i] != null &&
+          meal["strIngredient" + i] != ""
+        ) {
+          let li = document.createElement("li");
+          li.innerText = `${meal["strMeasure" + i]} ${
+            meal["strIngredient" + i]
+          }`;
+          ul.appendChild(li);
+        }
+      }
+      displayLookup(meal, ul);
+    })
+    .catch((error) => {
+      displayLookup();
+    });
+};
