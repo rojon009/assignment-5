@@ -63,8 +63,6 @@ html,body{
 }
 
 #ingredients ul{
-    /* list-style-image: url('../icons/check.svg');
-    list-style-position: inside; */
     list-style: none;
 }
 
@@ -76,5 +74,5 @@ html,body{
     content: url('../icons/check.svg');
     position: absolute;
     left: -22px;
-    top: 2px;
+    top: 3px;
 }
