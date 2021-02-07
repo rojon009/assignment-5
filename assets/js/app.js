@@ -35,7 +35,7 @@ const displayMeal = (meal) => {
                     </svg> Open
                     </h4>
                 </div>
-                <img src="${meal.strMealThumb}/preview"
+                <img src="${meal.strMealThumb}"
                     style="height: 170px; object-fit: cover;" class="card-img-top" alt="${meal.strTags}">
                 <div class="card-body">
                     <h6 class="text-center">Vegan Salad Bowl</h6>
@@ -74,7 +74,7 @@ const displayLookup = (meal, list) => {
     let lookupHTML = `
                 <h1 id="description" class="mt-5">Description:</h1>
                 <div class="row mt-3">
-                    <div class="col-6 mx-auto">
+                    <div class="col-12 col-md-8 mx-auto">
                         <div class="mx-auto">
                             <img class="img-fluid rounded-10" style="height: 300px; width: 100%; object-fit: cover;"
                                 src="${meal.strMealThumb}" alt="">

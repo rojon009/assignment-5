@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;0,900;1,400&display=swap');
+
 html,body{
     font-family: 'Roboto', sans-serif;
 }
@@ -20,12 +21,9 @@ html,body{
 .card{
     border-radius: 10px;
     overflow: hidden;
-    transition: all 0.5s;
     position: relative;
 }
-/* .card:hover img{
-    transform: scale(1.2);
-} */
+
 .card img{
     display: block;
     overflow: hidden;
@@ -39,9 +37,8 @@ html,body{
     border-radius: 10px;
 }
 
-
 .overlay{
-    transition: all 0.3s;
+    transition: all 0.8s;
     visibility: hidden;
     pointer-events: none;
     position: absolute;
@@ -51,19 +48,21 @@ html,body{
     right: 0;
     bottom: 0;
     left: 0;
+    opacity: 0;
 }
+
 .card:hover .overlay{
+    opacity: 1;
     visibility: visible;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
     backdrop-filter: blur(1px);
     pointer-events: all;
     cursor: pointer;
 }
 
 #ingredients ul{
-    list-style-image: url('./check.svg');
+    list-style-image: url('../icons/check.svg');
     list-style-position: inside;
-}
-
-li::marker{
-    padding-top: 5px;
 }
